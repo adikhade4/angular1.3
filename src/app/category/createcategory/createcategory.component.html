@@ -1,0 +1,20 @@
+<div class="container mt-5 mb-4">
+  <h1>New Category Form</h1>
+  <div class="row ">
+    <div class="col ">
+      <form #formCtrl="ngForm" ngNativeValidate>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" class="form-control" name="category" [(ngModel)]="category" autocomplete="off" ngControl="passwordCtrl"
+          required #task="ngModel"
+          [class.is-invalid]="task.invalid && task.touched"
+          ngControl="passwordCtrl">
+          <small class="text-danger" [class.d-none]="task.valid || task.untouched">Please fill category Name</small>
+        </div>
+        <button type="button" class="btn btn-warning" (click)="clearSearch()">Clear</button>
+        <button type="button" [disabled]="!formCtrl.form.valid" class="btn btn-primary ml-2" (click)="onSubmitClicked()">Submit</button>
+        <button type="button" class="btn btn-warning ml-2" (click)="onBackButtonClick()">Back</button>
+      </form>
+    </div>
+  </div>
+</div>

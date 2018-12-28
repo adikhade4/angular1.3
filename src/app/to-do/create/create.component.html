@@ -1,0 +1,34 @@
+<div class="container mt-5 mb-4">
+  <h1>New/EDIT FORM</h1>
+  <div class="row ">
+    <div class="col ">
+      <form #formCtrl="ngForm" ngNativeValidate>
+        <div class="form-group">
+          <label for="task">Task</label>
+          <input type="text" class="form-control" id="task" 
+          aria-describedby="emailHelp" name="name" [(ngModel)]="name"
+            ngControl="passwordCtrl" required #task="ngModel"
+             [class.is-invalid]="task.invalid && task.touched"
+             ngControl="passwordCtrl">
+             <small class="text-danger" [class.d-none]="task.valid || task.untouched">Please fill Task Name</small>
+        </div>
+        <div class="form-group">
+          <select required #topic="ngModel" [class.is-invalid]="topic.invalid && topic.touched" 
+          class="custom-select" name="category" [(ngModel)]="category" ngControl="passwordCtrl">
+            <option value="">Select category</option>
+            <option *ngFor="let cate of categories">{{cate.category}}</option>
+          </select>
+          <small class="text-danger" [class.d-none]="topic.valid || topic.untouched">Please choose a category</small>
+      
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="status" [(ngModel)]="status">
+          <label class="form-check-label" for="status">Completed</label>
+        </div>
+        <button type="button" class="btn btn-warning" (click)="clearSearch()">Clear</button>
+        <button [disabled]="!formCtrl.form.valid" class="btn btn-primary ml-2" (click)="onSubmitClicked()">Submit</button>
+        <button type="button" class="btn btn-warning ml-2" (click)="onBackButtonClick()">Back</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col mt-2">
+    <div class="row">
+      <h3><ng-content></ng-content></h3>
+      <div class="pull-right col-md-3 offset-md-9 mt-4">
+        <button type="submit" class="btn btn-outline-info mt-4" (click)="onNewButtonClick()">NEW TODO</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover" id="table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Task</th>
+              <th scope="col">Category</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let todo of todos; let i = index">
+              <th scope="row" class="form-check form-group">
+                <input type="checkbox" class="form-check-input ml-1" [checked]="todo.status">
+              </th>
+              <td>{{ todo.name }}</td>
+              <td>{{ todo.category }}</td>
+              <div class="row">
+                <div class="column d-flex justify-content-right">
+                  <button type="button" class="btn btn-warning pl-2" (click)="onEditButtonClick(i)">Edit</button>
+                  <button type="button" value="Remove" class="btn btn-danger ml-2" (click)="deleteFieldValue(todo)">Delete</button>
+                  
+                </div>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
